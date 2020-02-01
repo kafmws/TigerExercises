@@ -46,11 +46,7 @@ Table_ update(Table_ t, string id, int value) {
 }
 
 int lookup(Table_ t, string key) {
-    while (t) {
-        if (strcmp(t->id, key) == 0)return t->value;
-        t = t->tail;
-    }
-    return INT_MIN;
+    return strcmp(key, t->id) == 0 ? t->value : lookup(t->tail, key);
 }
 
 Table_ interpStm(A_stm stm, Table_ t);
